@@ -80,27 +80,27 @@ export function DataTable<TData, TValue>({
     },
   });
 
-  const handleDelete = async (id: string) => {
-    const res = await fetch(`${api}/${id}`, {
-      method: "DELETE",
-    });
-    if (res.ok) {
-      success = "Berhasil Menghapus Data";
-      failed = null;
-      res.json().then((res) => {
-        console.log(res.message);
-      });
-    } else {
-      failed = "Gagal Menghapus Data";
-      success = null;
-      res.json().then((res) => {
-        if (!success) {
-          console.log(res.error);
-        }
-      });
-    }
-    location.reload();
-  };
+  // const handleDelete = async (id: string) => {
+  //   const res = await fetch(`${api}/${id}`, {
+  //     method: "DELETE",
+  //   });
+  //   if (res.ok) {
+  //     success = "Berhasil Menghapus Data";
+  //     failed = null;
+  //     res.json().then((res) => {
+  //       console.log(res.message);
+  //     });
+  //   } else {
+  //     failed = "Gagal Menghapus Data";
+  //     success = null;
+  //     res.json().then((res) => {
+  //       if (!success) {
+  //         console.log(res.error);
+  //       }
+  //     });
+  //   }
+  //   location.reload();
+  // };
 
   return (
     <div>
@@ -162,7 +162,6 @@ export function DataTable<TData, TValue>({
                     </>
                   );
                 })}
-                <TableHead key="action">Action</TableHead>
               </TableRow>
             ))}
           </TableHeader>
@@ -183,13 +182,7 @@ export function DataTable<TData, TValue>({
                     </TableCell>
                   ))}
                   <TableCell className="flex gap-2">
-                    <a
-                      href={`${link}/edit/${row?.original?.id}`}
-                      className="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-800 cursor-pointer"
-                    >
-                      Edit
-                    </a>
-                    {dataType == "satuan" ||
+                    {/* {dataType == "satuan" ||
                     dataType == "category" ||
                     dataType == "umkm" ? (
                       ""
@@ -200,7 +193,7 @@ export function DataTable<TData, TValue>({
                       >
                         Delete
                       </button>
-                    )}
+                    )} */}
                   </TableCell>
                 </TableRow>
               ))

@@ -1,5 +1,4 @@
 import { PrismaClient } from "@prisma/client";
-import { option } from "@/option";
 
 const prisma = new PrismaClient();
 

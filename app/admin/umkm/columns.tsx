@@ -124,4 +124,19 @@ export const columns: ColumnDef<UMKM>[] = [
       }
     },
   },
+  {
+    id: "actions",
+    header: "Actions",
+    cell: ({ row }) => {
+      const umkm = row.original;
+      return (
+        <a
+          href={`/admin/umkm/edit/${umkm.id}`}
+          className="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-800 cursor-pointer"
+        >
+          Edit
+        </a>
+      );
+    },
+  },
 ];

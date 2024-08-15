@@ -114,7 +114,6 @@ export function DataTable<TData, TValue>({
                     </>
                   );
                 })}
-                <TableHead key="action">Action</TableHead>
               </TableRow>
             ))}
           </TableHeader>
@@ -134,14 +133,6 @@ export function DataTable<TData, TValue>({
                       )}
                     </TableCell>
                   ))}
-                  <TableCell className="flex gap-2">
-                    <a
-                      href={`${link}/edit/${row.original?.id}`}
-                      className="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-800 cursor-pointer z-50"
-                    >
-                      Edit
-                    </a>
-                  </TableCell>
                 </TableRow>
               ))
             ) : (

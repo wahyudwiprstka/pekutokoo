@@ -15,6 +15,13 @@ export type Product = {
   satuan: string;
 };
 
+const handleDelete = async (id: string) => {
+  const res = await fetch(`/api/${id}`, {
+    method: "DELETE",
+  });
+  location.reload();
+};
+
 export const columns: ColumnDef<Product>[] = [
   {
     accessorKey: "product_name",
@@ -114,6 +121,29 @@ export const columns: ColumnDef<Product>[] = [
       const formatted = category;
 
       return <div className="font-medium">{formatted.name}</div>;
+    },
+  },
+  {
+    id: "actions",
+    header: "Actions",
+    cell: ({ row }) => {
+      const product = row.original;
+      return (
+        <div className="flex gap-2">
+          <a
+            href={`/umkm/product/edit/${product.id}`}
+            className="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-800 cursor-pointer"
+          >
+            Edit
+          </a>
+          <button
+            className="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-800 cursor-pointer"
+            onClick={() => handleDelete(product.id)}
+          >
+            Delete
+          </button>
+        </div>
+      );
     },
   },
 ];

@@ -102,4 +102,19 @@ export const columns: ColumnDef<UMKM>[] = [
       }
     },
   },
+  {
+    id: "actions",
+    header: "Actions",
+    cell: ({ row }) => {
+      const user = row.original;
+      return (
+        <a
+          href={`/admin/user/edit/${user.id}`}
+          className="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-800 cursor-pointer"
+        >
+          Edit
+        </a>
+      );
+    },
+  },
 ];

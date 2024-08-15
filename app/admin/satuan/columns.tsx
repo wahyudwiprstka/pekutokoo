@@ -26,4 +26,19 @@ export const columns: ColumnDef<Satuan>[] = [
       );
     },
   },
+  {
+    id: "actions",
+    header: "Actions",
+    cell: ({ row }) => {
+      const satuan = row.original;
+      return (
+        <a
+          href={`/admin/satuan/edit/${satuan.id}`}
+          className="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-800 cursor-pointer"
+        >
+          Edit
+        </a>
+      );
+    },
+  },
 ];
