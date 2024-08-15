@@ -8,15 +8,15 @@ let success = null;
 let failed = null;
 
 const getSatuans = async () => {
-  const res = await fetch(`http://localhost:3000/api/satuan`);
+  const res = await fetch(`/api/satuan`);
   const data = await res.json();
   return data;
 };
 
 const Satuan = async () => {
   const data = await getSatuans();
-  const link = "http://localhost:3000/admin/satuan";
-  const api = "http://localhost:3000/api/satuan";
+  const link = "/admin/satuan";
+  const api = "/api/satuan";
   const filter = "name";
   const dataType = "satuan";
   return (
