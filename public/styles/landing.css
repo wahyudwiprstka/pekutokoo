@@ -1,0 +1,39 @@
+.carousel img{
+    width: 80% !important;
+    height: auto !important;
+}
+
+.carousel{
+    width: 100vw;
+    height: 30vw;
+}
+
+.mySwiper{
+    width: 60vw !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #fff !important;
+    fill: white !important;
+    stroke: white !important;
+    border-radius: 50%;
+}
+
+.category_card{
+    min-width: 200px !important;
+    padding: 40px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.scroll-content{
+    overflow-x: scroll;
+    width: 80vw;
+    margin: auto;
+    scrollbar-color: transparent transparent;
+}
+
+.scroll-content::-webkit-scrollbar{
+    display: none;
+}

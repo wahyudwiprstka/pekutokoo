@@ -1,0 +1,32 @@
+.card-img{
+    width: 250px !important;
+    height: auto !important;
+    aspect-ratio: 1/1;
+}
+
+.card-content .card-img{
+    width: 250px !important;
+    height: auto !important;
+    aspect-ratio: 1/1;
+    transition: all 0.2s ease-in-out;
+}
+
+.card-content img{
+    overflow: hidden;
+}
+
+.card-content:hover img{
+    transform: scale(1.2);
+}
+
+.img-box{
+    width: 500px !important;
+    height: 500px !important;
+}
+
+@media only screen and (max-width: 768px) {
+    .img-box{
+        width: 300px !important;
+        height: 300px !important;
+    }
+}

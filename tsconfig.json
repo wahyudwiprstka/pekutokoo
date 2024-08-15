@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/api/umkm/route.js", "lib/generateTempPassword.ts", "app/testUpload/page.jsx", "app/page.tsx", "app/api/umkm/[id]/route.js", "app/admin/umkm/edit/[id]/page.jsx", "app/admin/satuan/edit/[id]/page.jsx", "app/user/[id]/change_password/page.jsx", "app/testPagination/page.jsx", "app/api/satuan/route.js", "app/admin/category/data-table.tsx", "app/umkm/product/data-table.tsx", "lib/imageUpload.js"],
+  "exclude": ["node_modules"]
+}

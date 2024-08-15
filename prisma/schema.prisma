@@ -1,0 +1,134 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id                 String    @id @default(cuid())
+  userId             String
+  providerType       String
+  providerId         String
+  providerAccountId  String
+  refreshToken       String?
+  accessToken        String?
+  accessTokenExpires DateTime?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  user               User      @relation(fields: [userId], references: [id])
+
+  @@unique([providerId, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  userId       String
+  expires      DateTime
+  sessionToken String   @unique
+  accessToken  String   @unique
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  user         User     @relation(fields: [userId], references: [id])
+}
+
+model User {
+  id              String    @id @default(cuid())
+  name            String?
+  email           String?   @unique
+  emailVerified   DateTime?
+  identity_number String?   @unique
+  role            Role      @default(USER)
+  status          Int
+  temp_password   String?
+  password        String?
+  verified        Int       @default(0)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  accounts        Account[]
+  sessions        Session[]
+  UMKM            UMKM?
+  Order           Order[]
+}
+
+model VerificationRequest {
+  id         String   @id @default(cuid())
+  identifier String
+  token      String   @unique
+  expires    DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@unique([identifier, token])
+}
+
+model UMKM {
+  id           String @id @default(cuid())
+  id_user      String @unique
+  umkm_name    String
+  umkm_address String
+  wa_number    String
+  umkm_email   String
+  umkm_status  Int
+
+  user    User      @relation(fields: [id_user], references: [id])
+  Product Product[]
+}
+
+model Satuan {
+  id      String    @id @default(cuid())
+  name    String
+  Product Product[]
+}
+
+model Category {
+  id            String    @id @default(cuid())
+  category_name String
+  Product       Product[]
+}
+
+model Product {
+  id               String @id @default(cuid())
+  id_umkm          String
+  id_category      String
+  id_satuan        String
+  product_name     String
+  description      String
+  price_per_satuan Int
+  price            Int
+  product_status   Int
+  image_url        String
+
+  umkm     UMKM     @relation(fields: [id_umkm], references: [id])
+  category Category @relation(fields: [id_category], references: [id])
+  satuan   Satuan   @relation(fields: [id_satuan], references: [id])
+  Order    Order[]
+}
+
+model Order {
+  id          String   @id @default(cuid())
+  product_id  String
+  user_id     String
+  qty         Int
+  total_price Int
+  address     String
+  date        DateTime
+
+  product Product @relation(fields: [product_id], references: [id])
+  user    User    @relation(fields: [user_id], references: [id])
+}
+
+enum Role {
+  USER
+  UMKM
+  ADMIN
+  SUPERADMIN
+}
