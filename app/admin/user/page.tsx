@@ -19,7 +19,7 @@ const Page = () => {
   };
   useEffect(() => {
     getUsers();
-  });
+  }, []);
   const filter = "nama";
   return (
     <>
