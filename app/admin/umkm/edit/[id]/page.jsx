@@ -24,7 +24,7 @@ const EditUMKM = () => {
 
   useEffect(() => {
     async function getUMKM(){
-      const umkm = await fetch(`http://localhost:3000/api/umkm/${id}`);
+      const umkm = await fetch(process.env.APP_URL + `/api/umkm/${id}`);
       const data = await umkm.json();
       setUMKM(data);
       setEmail(data.umkm_email);
@@ -48,7 +48,7 @@ const EditUMKM = () => {
     }
 
     try {
-      const res = await fetch(`http://localhost:3000/api/umkm/${id}`, {
+      const res = await fetch(process.env.APP_URL + `/api/umkm/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

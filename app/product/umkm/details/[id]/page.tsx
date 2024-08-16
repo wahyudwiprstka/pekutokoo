@@ -19,7 +19,7 @@ const UmkmDetails = () => {
   const id = params.id;
 
   const getUmkm = async () => {
-    const res = await fetch(`/api/umkm/${id}`);
+    const res = await fetch(process.env.APP_URL + `/api/umkm/${id}`);
     const data = await res.json();
 
     setUmkm(data);
@@ -30,7 +30,7 @@ const UmkmDetails = () => {
   };
 
   const getProducts = async () => {
-    const res = await fetch(`/api/product/umkm/${id}`);
+    const res = await fetch(process.env.APP_URL + `/api/product/umkm/${id}`);
     const data = await res.json();
 
     setProducts(data);

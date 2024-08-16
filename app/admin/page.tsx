@@ -10,17 +10,17 @@ const AdminDashboard = () => {
   const [umkms, setUmkms] = useState<any[]>([]);
 
   const getProducts = async () => {
-    const res = await fetch("/api/product");
+    const res = await fetch(process.env.APP_URL + "/api/product");
     const data = await res.json();
     setProducts(data);
   };
   const getUsers = async () => {
-    const res = await fetch("/api/user");
+    const res = await fetch(process.env.APP_URL + "/api/user");
     const data = await res.json();
     setUsers(data);
   };
   const getUmkms = async () => {
-    const res = await fetch("/api/umkm");
+    const res = await fetch(process.env.APP_URL + "/api/umkm");
     const data = await res.json();
     setUmkms(data);
   };

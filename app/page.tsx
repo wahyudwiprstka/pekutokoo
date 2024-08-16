@@ -34,14 +34,15 @@ const LandingPage = () => {
   const { ref, inView } = useInView();
 
   const getCategories = async () => {
-    const res = await fetch("http://localhost:3000/api/category");
+    const res = await fetch(process.env.APP_URL + "/api/category");
     const data = await res.json();
     setCategories(data);
   };
 
   const getProducts = async () => {
     const res = await fetch(
-      `http://localhost:3000/api/product?page=${page}&itemsPerPage=${itemsPerPage}`
+      process.env.APP_URL +
+        `/api/product?page=${page}&itemsPerPage=${itemsPerPage}`
     );
     const data = await res.json();
     setProducts(data);

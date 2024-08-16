@@ -19,7 +19,7 @@ const EditCategory = () => {
 
   useEffect(() => {
     async function getCategory() {
-      const res = await fetch(`/api/category/${id}`);
+      const res = await fetch(process.env.APP_URL + `/api/category/${id}`);
       const data = await res.json();
       setName(data.category_name);
     }
@@ -35,7 +35,7 @@ const EditCategory = () => {
     }
 
     try {
-      const res = await fetch(`/api/category/${id}`, {
+      const res = await fetch(process.env.APP_URL + `/api/category/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

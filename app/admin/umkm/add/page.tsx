@@ -35,7 +35,7 @@ const AddUMKM = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:3000/api/umkm", {
+      const res = await fetch(process.env.APP_URL + "/api/umkm", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

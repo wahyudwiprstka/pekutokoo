@@ -19,7 +19,7 @@ const AddSatuan = () => {
 
   useEffect(() => {
     async function getSatuan() {
-      const res = await fetch(`/api/satuan/${id}`);
+      const res = await fetch(process.env.APP_URL + `/api/satuan/${id}`);
       const resp = await res.json();
       setData(resp);
       setName(resp.name);

@@ -16,7 +16,7 @@ export type Product = {
 };
 
 const handleDelete = async (id: string) => {
-  const res = await fetch(`/api/${id}`, {
+  const res = await fetch(process.env.APP_URL + `/api/${id}`, {
     method: "DELETE",
   });
   location.reload();

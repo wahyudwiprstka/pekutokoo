@@ -17,13 +17,15 @@ const Category = () => {
   const id = params.id;
 
   const getCategory = async () => {
-    const res = await fetch(`/api/category/${id}`);
+    const res = await fetch(process.env.APP_URL + `/api/category/${id}`);
     const data = await res.json();
     setCategory(data);
   };
 
   const getProducts = async () => {
-    const res = await fetch(`/api/product/category/${id}`);
+    const res = await fetch(
+      process.env.APP_URL + `/api/product/category/${id}`
+    );
     const data = await res.json();
     setProducts(data);
   };

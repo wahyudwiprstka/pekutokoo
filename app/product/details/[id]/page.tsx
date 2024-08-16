@@ -20,10 +20,10 @@ const ProductDetails = () => {
 
   const id = params.id;
 
-  const message = `Halo, apakah produk ini masih tersedia? \n http://pekutoko.my.id/product/details/${id}`;
+  const message = `Halo, apakah produk ini masih tersedia? \n ${process.env.APP_URL}/product/details/${id}`;
 
   const getProduct = async () => {
-    const res = await fetch(`/api/product/${id}`);
+    const res = await fetch(process.env.APP_URL + `/api/product/${id}`);
     const data = await res.json();
     setProduct(data);
     let tempPhoneNumber = data.umkm.wa_number;
@@ -32,7 +32,9 @@ const ProductDetails = () => {
   };
 
   const getProducts = async () => {
-    const res = await fetch(`/api/product?page=1&itemsPerPage=12`);
+    const res = await fetch(
+      process.env.APP_URL + `/api/product?page=1&itemsPerPage=12`
+    );
     const data = await res.json();
     setProducts(data);
   };

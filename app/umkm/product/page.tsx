@@ -12,7 +12,7 @@ let failed = null;
 const Page = () => {
   const [data, setData] = useState(null);
   const getProducts = async () => {
-    const res = await fetch(`/api/product`);
+    const res = await fetch(process.env.APP_URL + `/api/product`);
     const resp = await res.json();
     setData(resp);
     return data;

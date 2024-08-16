@@ -12,7 +12,7 @@ let failed = null;
 const Page = () => {
   const [data, setData] = useState(null);
   const getUsers = async () => {
-    const res = await fetch(`http://localhost:3000/api/user`);
+    const res = await fetch(process.env.APP_URL + `/api/user`);
     const resp = await res.json();
     setData(resp);
     return data;
@@ -20,10 +20,7 @@ const Page = () => {
   useEffect(() => {
     getUsers();
   });
-  const link = "http://localhost:3000/admin/user";
-  const api = "http://localhost:3000/api/user";
   const filter = "nama";
-  const dataType = "user";
   return (
     <>
       <Sidebar />
@@ -39,18 +36,7 @@ const Page = () => {
               Tambah User
             </a>
           </div>
-          {data && (
-            <DataTable
-              columns={columns}
-              data={data}
-              link={link}
-              api={api}
-              success={success}
-              failed={failed}
-              dataType={dataType}
-              filter={filter}
-            />
-          )}
+          {data && <DataTable columns={columns} data={data} filter={filter} />}
         </div>
       </section>
     </>

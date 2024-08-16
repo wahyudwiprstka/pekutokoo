@@ -32,7 +32,7 @@ const Register = () => {
     }
 
     try {
-      const res = await fetch("/api/user/register", {
+      const res = await fetch(process.env.APP_URL + "/api/user/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

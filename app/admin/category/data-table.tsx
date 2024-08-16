@@ -35,22 +35,12 @@ import { useRouter } from "next/navigation";
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
-  link: string;
-  api: string;
-  success: any;
-  failed: any;
-  dataType: string;
   filter: string;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
-  link,
-  api,
-  success,
-  failed,
-  dataType,
   filter,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);

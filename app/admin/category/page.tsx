@@ -12,18 +12,15 @@ let failed = null;
 const Page = () => {
   const [data, setData] = useState(null);
   const getCategories = async () => {
-    const res = await fetch(`/api/category`);
+    const res = await fetch(process.env.APP_URL + `/api/category`);
     const resp = await res.json();
-    setData(resp);  
+    setData(resp);
     return data;
   };
   useEffect(() => {
     getCategories();
   });
-  const link = "/admin/category";
-  const api = "/api/category";
   const filter = "kategori";
-  const dataType = "category";
   return (
     <>
       <Sidebar />
@@ -39,18 +36,7 @@ const Page = () => {
               Tambah Kategori
             </a>
           </div>
-          {data && (
-            <DataTable
-              columns={columns}
-              data={data}
-              link={link}
-              api={api}
-              success={success}
-              failed={failed}
-              dataType={dataType}
-              filter={filter}
-            />
-          )}
+          {data && <DataTable columns={columns} data={data} filter={filter} />}
         </div>
       </section>
     </>

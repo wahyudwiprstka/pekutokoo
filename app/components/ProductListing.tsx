@@ -8,7 +8,7 @@ const ProductListing = () => {
   const [products, setProducts] = useState<any[]>([]);
 
   const getProducts = async () => {
-    const res = await fetch("/api/product");
+    const res = await fetch(process.env.APP_URL + "/api/product");
     const data = await res.json();
 
     setProducts(data);

@@ -20,7 +20,7 @@ const AddSatuan = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:3000/api/satuan", {
+      const res = await fetch(process.env.APP_URL + "/api/satuan", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

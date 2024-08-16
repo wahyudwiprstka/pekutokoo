@@ -32,7 +32,7 @@ const ChangePassword = () => {
     }
 
     try {
-      const res = await fetch(`/api/user/${id}/password`, {
+      const res = await fetch(process.env.APP_URL + `/api/user/${id}/password`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

@@ -14,7 +14,9 @@ const ProductPage = () => {
   const [products, setProducts] = useState<any[]>([]);
 
   const getProducts = async () => {
-    const res = await fetch(`/api/product/search/${search}`);
+    const res = await fetch(
+      process.env.APP_URL + `/api/product/search/${search}`
+    );
     const data = await res.json();
     setProducts(data);
   };

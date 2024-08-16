@@ -37,15 +37,18 @@ const ChangePassword = () => {
     }
 
     try {
-      const res = await fetch(`/api/user/${id}/password`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          password,
-        }),
-      });
+      const res = await fetch(
+        process.env.APP_URL + `/api/user/${id}/password`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            password,
+          }),
+        }
+      );
 
       if (res.ok) {
         setSuccess("Berhasil Mengubah Password!");

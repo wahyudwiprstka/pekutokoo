@@ -10,7 +10,7 @@ import Loading from "@/app/components/Loading";
 let success = null;
 let failed = null;
 
-const Satuan = async () => {
+const Satuan = () => {
   const [data, setData] = useState<any[]>([]);
   const [filter, setFilter] = useState("name");
 

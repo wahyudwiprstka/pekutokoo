@@ -12,7 +12,7 @@ let failed = null;
 const Page = () => {
   const [data, setData] = useState(null);
   const getUMKMs = async () => {
-    const res = await fetch(`http://localhost:3000/api/umkm`);
+    const res = await fetch(process.env.APP_URL + `/api/umkm`);
     const resp = await res.json();
     setData(resp);
     return data;
@@ -20,10 +20,7 @@ const Page = () => {
   useEffect(() => {
     getUMKMs();
   }, []);
-  const link = "http://localhost:3000/admin/umkm";
-  const api = "http://localhost:3000/api/umkm";
   const filter = "Nama UMKM";
-  const dataType = "umkm";
   return (
     <>
       <Sidebar />
@@ -39,18 +36,7 @@ const Page = () => {
               Tambah UMKM
             </a>
           </div>
-          {data && (
-            <DataTable
-              columns={columns}
-              data={data}
-              link={link}
-              api={api}
-              success={success}
-              failed={failed}
-              dataType={dataType}
-              filter={filter}
-            />
-          )}
+          {data && <DataTable columns={columns} data={data} filter={filter} />}
         </div>
       </section>
     </>

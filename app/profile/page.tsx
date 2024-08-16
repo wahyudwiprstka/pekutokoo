@@ -13,7 +13,9 @@ const ProfilePage = () => {
 
   const getUser = async () => {
     if (status === "authenticated") {
-      const res = await fetch(`/api/user/${session?.user?.id}`);
+      const res = await fetch(
+        process.env.APP_URL + `/api/user/${session?.user?.id}`
+      );
       const data = await res.json();
       setUser(data);
     }

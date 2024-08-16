@@ -162,6 +162,13 @@ const SignIn = () => {
                   </a>
                 </p>
 
+                <p className="block mt-4 text-sm">
+                  Belum punya akun?{" "}
+                  <a className="text-indigo-600" href="/register">
+                    Register
+                  </a>
+                </p>
+
                 <p className="mt-10 text-center text-sm text-gray-500">
                   Pekutoko 2024
                 </p>

@@ -24,7 +24,7 @@ const AddUser = () => {
     }
 
     try {
-      const res = await fetch("/api/user", {
+      const res = await fetch(process.env.APP_URL + "/api/user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -39,7 +39,7 @@ const AddUser = () => {
       if (res.ok) {
         setSuccess("Berhasil membuat User!");
         setError("");
-        router.push("/admin/user"); 
+        router.push("/admin/user");
         res.json().then((res) => {
           console.log(res.message);
         });

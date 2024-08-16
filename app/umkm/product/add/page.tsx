@@ -56,7 +56,7 @@ const AddProduct = () => {
   };
 
   async function getSatuan() {
-    const res = await fetch("/api/satuan");
+    const res = await fetch(process.env.APP_URL + "/api/satuan");
     const data = await res.json();
     if (data) {
       setSatuans(data);
@@ -65,7 +65,7 @@ const AddProduct = () => {
   }
 
   async function getCategory() {
-    const res = await fetch("/api/category");
+    const res = await fetch(process.env.APP_URL + "/api/category");
     const data = await res.json();
     if (data) {
       setCategories(data);
@@ -74,7 +74,7 @@ const AddProduct = () => {
   }
 
   async function getUMKM() {
-    const res = await fetch(`/api/umkm/user/${userId}`);
+    const res = await fetch(process.env.APP_URL + `/api/umkm/user/${userId}`);
     const data = await res.json();
     console.log(data);
     setUMKM(data);
@@ -105,7 +105,7 @@ const AddProduct = () => {
     }
 
     const postApi = async (url: string) => {
-      const res = await fetch("/api/product", {
+      const res = await fetch(process.env.APP_URL + "/api/product", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

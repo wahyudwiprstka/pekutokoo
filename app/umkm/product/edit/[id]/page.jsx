@@ -53,7 +53,7 @@ const EditProduct = () => {
 
 
   async function getProduct(){
-    const res = await fetch(`/api/product/${id}`);
+    const res = await fetch(process.env.APP_URL + `/api/product/${id}`);
     const data = await res.json();
     setProduct(data);
     setProductName(data.product_name)
@@ -66,7 +66,7 @@ const EditProduct = () => {
   }
 
   async function getSatuan(){
-    const res = await fetch('/api/satuan');
+    const res = await fetch(process.env.APP_URL + '/api/satuan');
     const data = await res.json();
     if(data){
       setSatuans(data);
@@ -75,7 +75,7 @@ const EditProduct = () => {
   }
 
   async function getCategory(){
-    const res = await fetch('/api/category');
+    const res = await fetch(process.env.APP_URL + '/api/category');
     const data = await res.json();
     if(data){
       setCategories(data);
@@ -84,7 +84,7 @@ const EditProduct = () => {
   }
 
   async function getUMKM(){
-    const res = await fetch(`/api/umkm/user/${userId}`)
+    const res = await fetch(process.env.APP_URL + `/api/umkm/user/${userId}`)
     const data = await res.json();
     console.log(data);
     setUMKM(data);
@@ -117,7 +117,7 @@ const EditProduct = () => {
     try {
       const umkm = product.id_umkm;
       const postApi = async(url) => {
-        const res = await fetch(`/api/product/${id}`, {
+        const res = await fetch(process.env.APP_URL + `/api/product/${id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",

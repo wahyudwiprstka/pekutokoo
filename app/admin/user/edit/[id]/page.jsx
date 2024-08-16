@@ -22,7 +22,7 @@ const AddUser = () => {
   const id = params.id;
 
   async function getUser(){
-      const user = await fetch(`http://localhost:3000/api/user/${id}`);
+      const user = await fetch(process.env.APP_URL + `/api/user/${id}`);
       const data = await user.json();
       setName(data.name);
       setEmail(data.email);
@@ -45,7 +45,7 @@ const AddUser = () => {
     }
 
     try {
-      const res = await fetch(`http://localhost:3000/api/user/${id}`, {
+      const res = await fetch(process.env.APP_URL + `/api/user/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
