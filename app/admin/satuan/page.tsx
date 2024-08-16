@@ -8,7 +8,7 @@ let success = null;
 let failed = null;
 
 const getSatuans = async () => {
-  const res = await fetch(`/api/satuan`);
+  const res = await fetch(process.env.APP_URL + `/api/satuan`);
   const data = await res.json();
   return data;
 };
