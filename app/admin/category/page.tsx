@@ -19,7 +19,7 @@ const Page = () => {
   };
   useEffect(() => {
     getCategories();
-  });
+  }, []);
   const filter = "kategori";
   return (
     <>
